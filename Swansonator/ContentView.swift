@@ -12,7 +12,7 @@ struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color.blue)
+            .background(Color.red)
             .foregroundColor(.white)
             .clipShape(Capsule())
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
@@ -23,17 +23,22 @@ struct GrowingButton: ButtonStyle {
 struct ContentView: View {
     @State var Quote: String = ""
     var body: some View {
-                       
             VStack() {
-                Image("ronSwanson").padding()
-                    Spacer()
+                Text("Live, Love, Ron")
+                    .font(Font.custom("Noteworthy", size: 20)).bold()
+                    .foregroundColor(Color.white)
+                Image("ronSwanson")
+                    .resizable()
+                Spacer()
                 Text(Quote)
+                    .foregroundColor(Color.white)
+                    .font(Font.custom("Noteworthy", size: 14)).bold()
                 Spacer()
                 Button("Get a Quote") {
                     QuoteButton()
                 }
                 .buttonStyle(GrowingButton())
-            }
+            }.background(Color.black)
         
     }
     private func QuoteButton(){
